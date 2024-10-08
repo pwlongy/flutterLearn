@@ -54,6 +54,12 @@ void main(List<String> args) {
 
   // 函数可以作为参数调用
   test(bar);
+  // 使用匿名函数（在 dart 函数的语法中 匿名函数只能作为参数传递）
+  test(() {
+    print("使用匿名函数");
+  });
+  // 箭头函数（在dart语法中， 箭头函数的函数体只有一行）
+  test(() => print("箭头函数被调用"));
 }
 
 // 在方法中的返回值的类型式可以省略的（类型推断， 开发中不推荐这么使用）
@@ -88,4 +94,9 @@ void test(Function foo) {
 
 void bar() {
   print("bar函数被调用了");
+}
+
+// 当封装的test函数需要传入一个函数的时候
+void test1(Function foo) {
+  foo();
 }
