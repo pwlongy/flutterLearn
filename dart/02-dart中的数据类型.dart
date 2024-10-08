@@ -43,5 +43,49 @@ void main(List<String> args) {
   // 3. 映射Map
   var info = {"name": 'sadsa', "age": 18};
 
-  //
+  // 函数
+  // 1. 函数的基本使用
+  print(sum(20, 30));
+  // 2. 必选参数
+  sayHello1("hello");
+  // 2. 函数的可选参数
+  sayHello2('world');
+  sayHello3('hello world');
+
+  // 函数可以作为参数调用
+  test(bar);
+}
+
+// 在方法中的返回值的类型式可以省略的（类型推断， 开发中不推荐这么使用）
+int sum(int num1, int num2) {
+  return num1 + num2;
+}
+
+// 必选参数： 必须传
+void sayHello1(String name) {
+  print(name);
+}
+
+// 可选参数： 位置可选参数 - 命名可选参数
+// 位置可选参数： [int age, double height]
+// 在 dart 中不存在方法的重载， 不能存在两个相同的方法
+// 实参和形参是根据位置匹配的
+void sayHello2(String name, [int? age, double? height]) {
+  print('名称为$name,年龄为$age,身高为$height');
+}
+
+// 命名可选参数
+// 默认值，只有可选参数才可以设置默认值
+void sayHello3(String name, {int? age = 18, double? height}) {
+  print('名称为$name,年龄为$age,身高为$height');
+}
+
+// 函数是一等公民
+// 函数可以作为另一个函数的参数
+void test(Function foo) {
+  foo();
+}
+
+void bar() {
+  print("bar函数被调用了");
 }
